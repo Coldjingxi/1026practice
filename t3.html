@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+    <style>
+        .red{
+            background-color: red;
+        }
+        .yellow{
+            background-color:yellow;
+        }
+    </style>
+</head>
+<body>
+    <ul id="box">
+        <li
+         v-for='(item,index) in list'
+         @click = 'headclick(item)'
+         :class = "item.active? 'red':'yellow'"
+        > {{ item.text }}</li>                                                                                                                                                                                                                                                                                                                  
+    </ul>
+</body>
+<script>
+    var vm = new Vue({
+        el:"#box",
+        data:{
+            list:[
+                { text:'第一行',bgactive:false },
+                { text:'第二行',active:false },
+                { text:'第三行',active:false },    
+                ]
+        },
+        methods:{
+            headclick(item){
+                console.log(item);
+                
+                item.active=!item.active
+              /* this[index].active=true */
+            }
+        }
+
+    })
+</script>
+</html>

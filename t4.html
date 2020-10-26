@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="box">
+    <input id="fi" type="text" v-model='mytext'>
+    <div @click='headclick'>按钮</div>
+    <ul >
+        <li v-for='(item,index) in list'>
+            <input type="checkbox">
+            {{item}}
+            <div @click='headclickdel(index)'>delet</div>
+        </li>
+    </ul>
+    </div>
+
+</body>
+<script>
+    var vm = new Vue({
+        el: '#box',
+        data:{
+            mytext:'',
+            list:[]
+        },
+        methods:{
+            headclick(){
+            this.list.push(this.mytext)
+            },
+            headclickdel(index){
+            this.list.splice(index,1)    
+            }
+        }
+    })
+</script>
+</html>

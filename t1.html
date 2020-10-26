@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+    <style>
+        .red{
+            color:red;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        {{a}}
+        <div v-html="rawHtml"></div>
+        <div v-bind:class="color">text</div>
+        <div>{{ok>1? 'yes':'no' }}</div>
+    </div>
+    
+<script>
+    var data = {
+        a:1,
+        rawHtml:'<span style="color:red">今天天气不错</span>',
+        color:"red",
+        ok:0
+        }
+    var vm = new Vue(
+        
+        {
+            el:'#app',
+            data : data
+        }
+        
+    )
+    vm.$data.a = 'hello'
+    vm.$watch('a',function(newVale,oldVale){
+        console.log(newVale,oldVale,1111111111111111);
+    })
+
+</script>
+</body>
+</html>

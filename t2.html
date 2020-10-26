@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+    <style>
+        .red{
+            background-color: red;
+        }
+        .yellow{
+            background-color: yellow;
+        }
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <ul id="box">
+        <li 
+        v-for='(item,index) in list' 
+        :class='index==ind?"red":"yellow"' 
+        @mouseover='handmouseover(index)'
+        @mouseout='handmouseout'
+        >
+            {{item}}---{{index}}
+            <button></button>
+        </li>
+    </ul>
+</body>
+    <script>
+        var vm = new Vue({
+            el : '#box',
+            data:{
+                list:[
+                    '第一行',
+                    '第二行',
+                    '第三行'
+                ],
+                arrcolor:[],
+                ind:0
+            },
+            methods:{
+                handmouseover(index){
+                    this.ind=index
+                    // this.arrcolor=[]
+                    // this.arrcolor.push('red')
+                },
+                handmouseout(){
+                    // this.arrcolor=[]
+                    // this.arrcolor.push('yellow')
+                }
+                
+            }
+        })
+    </script>
+</html>
